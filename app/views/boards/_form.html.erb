@@ -1,0 +1,28 @@
+<%= render 'shared/error_messages' %>
+
+<%= form_with model: board do |form| %>
+  <div class="mb-3">
+    <%= form.label :author_name, '名前' %>
+    <%= form.text_field :author_name, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :title, 'タイトル' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :body, '本文' %>
+    <%= form.text_area :body, class: 'form-control', rows: 10 %>
+  </div>
+  <div class="form-group">
+    <span>タグ</span>
+    <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div class="form-check">
+        <%= tag.label class: 'form-check-label' do %>
+          <%= tag.check_box class: 'form-check-input' %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= form.submit '保存', class: 'btn btn-primary' %>
+<% end %>

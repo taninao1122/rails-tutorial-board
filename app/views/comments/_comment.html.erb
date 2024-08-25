@@ -1,0 +1,8 @@
+<div class="p-comment__item">
+  <p><%= simple_format(comment.comment) %></p>
+  <div class="p-comment__bottomLine">
+    <span><%= comment.name %></span>
+    <span><%= comment.created_at.to_s() %></span>
+    <span><%= button_to '削除', comment, class: 'btn btn-outline-dark', method: :delete, data: { turbo_confirm: '削除してもよろしいでしょうか？' } %></span>
+  </div>
+</div>
